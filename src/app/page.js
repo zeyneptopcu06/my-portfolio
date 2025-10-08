@@ -1,103 +1,177 @@
-import Image from "next/image";
+// src/app/page.js
 
-export default function Home() {
+// 1. Next.js'e bu dosyanın Client Component olduğunu söyleyin!
+'use client'; 
+
+// 2. TÜM GEREKLİ BİLEŞENLERİ İÇERİ ALIN (Import Yolu Kontrol Edildi)
+// Eğer 'src' klasörü kullanıyorsanız '../components' yolu genellikle doğrudur.
+import Navbar from '../app/components/Navbar'; 
+import ExperienceCard from '../app/components/ExperienceCard';
+import ProjectCard from '../app/components/ProjectCard'; 
+import SkillBadge from '../app/components/SkillBadge';
+
+import { Download, MessageSquare } from 'lucide-react'; 
+// Veri dosyasından tüm listeleri süslü parantez içinde içeri alın
+import { experiences, projects, skills } from '../app/components/portfolioData'; 
+
+// 1. groupSkillsByCategory FONKSİYONU BURADA TANIMLANMALI
+const groupSkillsByCategory = (skills) => {
+  return skills.reduce((acc, skill) => {
+    const { category } = skill;
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(skill);
+    return acc;
+  }, {});
+};
+
+
+// 2. categorizedSkills DEĞİŞKENİ HEMEN BURADA HESAPLANMALI
+// Bu, fonksiyonun dışında olduğu için tüm bileşen tarafından erişilebilir olur.
+const categorizedSkills = groupSkillsByCategory(skills);
+export default function HomePage() {
+const PROFILE_IMAGE_URL = 'resim.jpg'; // <-- Bu ifade yeterli!
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Navbar /> 
+      
+      <main className="flex flex-col items-center p-8 bg-gray-900"> {/* Arka plan rengini main'e verdik */}
+        
+        {/* -------------------- 
+        1. HAKKIMDA (HERO) BÖLÜMÜ - ID: #hakkimda
+        -------------------- */}
+        <section 
+          id="hakkimda" 
+          className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] text-center w-full max-w-4xl"
+        >
+          
+          {/* Profil Resmi ve Başlık */}
+          <div className="mb-8">
+            {/* Profil resmi alanı */}
+<div className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-teal-400 overflow-hidden">
+  <img
+    src={PROFILE_IMAGE_URL} // 📁 Resim dosyanın yolu
+    alt="Zeynep Topçu"
+    className="w-full h-full object-cover"
+  />
+</div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+            <h1 className="text-6xl font-extrabold text-white mb-2">
+              Merhaba, Ben <span className="text-teal-400">Zeynep Topçu</span>
+            </h1>
+          </div>
+
+          
+
+          {/* Detaylı Açıklama */}
+          <p className="text-lg text-gray-400 mb-10 max-w-3xl">
+            Merhaba! Ben Zeynep Topçu, Bilgisayar Mühendisliği mezunuyum. Yazılım geliştirme alanında özellikle web tabanlı projeler üzerinde çalışıyorum.
+Frontend ve backend teknolojilerini bir araya getirerek kullanıcı dostu, işlevsel ve modern uygulamalar geliştirmeyi seviyorum.
+
+Üniversite yıllarım boyunca farklı yazılım projelerinde yer alarak problem çözme, takım çalışması ve sistem tasarımı konularında deneyim kazandım.
+Günümüzde web teknolojilerinin hızla geliştiğinin farkındayım; bu yüzden sürekli öğrenmeye, yeni kütüphane ve framework’leri keşfetmeye önem veriyorum.
+
+Hedefim, hem teknik becerilerimi hem de yaratıcı yönümü kullanarak insanların hayatını kolaylaştıran dijital çözümler üretmek.
+          </p>
+
+          {/* Butonlar */}
+          <div className="flex space-x-4">
+           
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  href="/ZeynepTopçucv.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center space-x-2 border border-gray-500 hover:border-teal-400 text-white font-semibold py-3 px-6 rounded-lg transition duration-300"
+>
+  <Download size={20} />
+  <span>CV Görüntüle</span>
+</a>
+
+
+            
+            
+          </div>
+        </section>
+
+
+
+        {/* -------------------- 
+        2. DENEYİM BÖLÜMÜ - ID: #deneyim
+        -------------------- */}
+        <section id="deneyim" className="w-full max-w-4xl py-16 px-4 pt-24 border-t border-gray-800">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-extrabold text-white">İş Deneyimi</h2>
+          </div>
+          <div className="space-y-8">
+            {/* experiences değişkeni buradan kullanılıyor! */}
+            {experiences.map((exp, index) => (
+              <ExperienceCard key={index} experience={exp} />
+            ))}
+          </div>
+        </section>
+
+
+        {/* -------------------- 
+        3. PROJELER BÖLÜMÜ - ID: #projeler
+        -------------------- */}
+        <section id="projeler" className="w-full max-w-4xl py-16 px-4 pt-24 border-t border-gray-800">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-extrabold text-white">Öne Çıkan Projeler</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* projects değişkeni buradan kullanılıyor! */}
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
+        </section>
+
+        {/* -------------------- 
+        {/* -------------------- 
+4. YETENEKLER BÖLÜMÜ - ID: #yetenekler
+-------------------- */}
+<section 
+  id="yetenekler" // Menüdeki link buraya kayacak!
+  className="w-full max-w-4xl py-16 px-4 pt-24 border-t border-gray-800"
+>
+  <div className="text-center mb-12">
+    <p className="text-sm uppercase tracking-widest text-teal-400 mb-2">TOOLKIT</p>
+    <h2 className="text-5xl font-extrabold text-white">Teknik Yetenekler</h2>
+    <p className="text-gray-400 mt-2">Uzman olduğum teknolojiler ve araçlar.</p>
+  </div>
+
+  {/* Yetenek Listesi */}
+  <div className="space-y-8">
+    {Object.entries(categorizedSkills).map(([category, skillList]) => (
+      <div key={category} className="mb-6">
+        {/* Kategori Başlığı */}
+        <h3 className="text-3xl font-bold text-gray-300 mb-5 border-b border-gray-700 pb-2">
+          {category}
+        </h3>
+        {/* Yetenek Rozetleri */}
+        <div className="flex flex-wrap gap-3">
+          {skillList.map((skill) => (
+            <SkillBadge key={skill.name} skill={skill} />
+          ))}
         </div>
+      </div>
+    ))}
+  </div>
+</section>
+        {/* -------------------- 
+        5. İLETİŞİM BÖLÜMÜ - ID: #iletisim
+        -------------------- */}
+        <section id="iletisim" className="w-full max-w-4xl py-16 px-4 pt-24 border-t border-gray-800">
+            {/* ... İletişim kodları buraya gelecek ... */}
+        </section>
+        {/* FOOTER */}
+        <footer className="w-full max-w-4xl text-center py-10 text-gray-500 dark:text-gray-500 border-t border-gray-200 dark:border-gray-800 mt-8">
+            <p>Zeynep Topçu &copy; {new Date().getFullYear()} | Bilgisayar Mühendisliği | Modern Web Odaklı</p>
+        </footer>
+
+
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
