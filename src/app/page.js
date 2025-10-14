@@ -9,10 +9,11 @@ import Navbar from '../app/components/Navbar';
 import ExperienceCard from '../app/components/ExperienceCard';
 import ProjectCard from '../app/components/ProjectCard'; 
 import SkillBadge from '../app/components/SkillBadge';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 import { Download, MessageSquare } from 'lucide-react'; 
 // Veri dosyasından tüm listeleri süslü parantez içinde içeri alın
-import { experiences, projects, skills } from '../app/components/portfolioData'; 
+import { experiences, projects, skills, education,contactInfo} from '../app/components/portfolioData'; 
 
 // 1. groupSkillsByCategory FONKSİYONU BURADA TANIMLANMALI
 const groupSkillsByCategory = (skills) => {
@@ -159,12 +160,62 @@ Hedefim, hem teknik becerilerimi hem de yaratıcı yönümü kullanarak insanlar
     ))}
   </div>
 </section>
-        {/* -------------------- 
-        5. İLETİŞİM BÖLÜMÜ - ID: #iletisim
-        -------------------- */}
-        <section id="iletisim" className="w-full max-w-4xl py-16 px-4 pt-24 border-t border-gray-800">
-            {/* ... İletişim kodları buraya gelecek ... */}
-        </section>
+<section id="egitim" className="w-full max-w-4xl py-16 px-4 pt-24 border-t border-gray-800">
+  <div className="text-center mb-12">
+    <h2 className="text-5xl font-extrabold text-white">Eğitim</h2>
+    <p className="text-gray-400 mt-2">Eğitim geçmişim ve aldığım dereceler.</p>
+  </div>
+  <div className="space-y-8">
+    {education.map((edu, index) => (
+      <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+        <h3 className="text-2xl font-bold text-teal-400">{edu.school}</h3>
+        <p className="text-gray-300 font-semibold">{edu.degree} | {edu.period}</p>
+        <p className="text-gray-400 mt-2">{edu.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+  {/* -------------------- 
+5. İLETİŞİM BÖLÜMÜ - ID: #iletisim
+-------------------- */}
+<section id="iletisim" className="w-full max-w-4xl py-16 px-4 pt-24 border-t border-gray-800 mx-auto">
+  <div className="text-center mb-12">
+    <h2 className="text-5xl font-extrabold text-white">İletişim</h2>
+    <p className="text-gray-400 mt-3 max-w-2xl mx-auto">
+      Benimle iletişime geçmek veya projeler hakkında konuşmak istersen aşağıdaki platformlardan ulaşabilirsin.
+    </p>
+  </div>
+
+  <div className="flex justify-center space-x-10 mt-10">
+    <a
+      href="https://www.linkedin.com/in/zeynep-top%C3%A7u-6a0432244"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex flex-col items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
+    >
+      <FaLinkedin size={40} />
+      <span className="mt-2">LinkedIn</span>
+    </a>
+
+    <a
+      href="https://github.com/zeyneptopcu06"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex flex-col items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
+    >
+      <FaGithub size={40} />
+      <span className="mt-2">GitHub</span>
+    </a>
+
+    <a
+      href="mailto:topcuzeynep445@gmail.com"
+      className="flex flex-col items-center text-gray-300 hover:text-teal-400 transition-colors duration-200"
+    >
+      <FaEnvelope size={40} />
+      <span className="mt-2">E-posta</span>
+    </a>
+  </div>
+</section>
         {/* FOOTER */}
         <footer className="w-full max-w-4xl text-center py-10 text-gray-500 dark:text-gray-500 border-t border-gray-200 dark:border-gray-800 mt-8">
             <p>Zeynep Topçu &copy; {new Date().getFullYear()} | Bilgisayar Mühendisliği | Modern Web Odaklı</p>
