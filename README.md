@@ -1,40 +1,76 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💼 Kişisel Portföy Sitesi
 
-## Getting Started
+Bu proje, yazılım geliştirme çalışmalarımı, eğitim bilgilerimi, teknik yeteneklerimi ve iletişim bağlantılarımı tek bir web sitesi üzerinde göstermek amacıyla hazırlanmış kişisel portföy sitesidir.
 
-First, run the development server:
+Uygulama **Next.js**, **React** ve **Tailwind CSS** kullanılarak geliştirilmiştir.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📌 Proje Hakkında
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Portföy sitesi; hakkımda, iş deneyimi, projeler, teknik yetenekler, eğitim ve iletişim bölümlerinden oluşmaktadır.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Site üzerinden CV görüntülenebilir, GitHub ve LinkedIn profillerine ulaşılabilir ve e-posta ile iletişim kurulabilir.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Özellikler
 
-## Learn More
+- Hakkımda bölümü
+- İş deneyimi bölümü
+- Öne çıkan projeler alanı
+- Teknik yetenekler listesi
+- Eğitim bilgileri
+- İletişim bölümü
+- CV görüntüleme bağlantısı
+- GitHub, LinkedIn ve e-posta bağlantıları
+- Modern ve responsive arayüz
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Kullanılan Teknolojiler
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Frontend:** Next.js, React, JavaScript  
+**Stil:** Tailwind CSS  
+**İkonlar:** Lucide React, React Icons  
+**Araçlar:** Git, GitHub, VS Code
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Proje Yapısı
 
-## Deploy on Vercel
+- `src/app/page.js`: Ana sayfa yapısı
+- `src/app/components/`: Sayfada kullanılan bileşenler
+- `src/app/globals.css`: Genel stil dosyası
+- `public/`: Görsel ve statik dosyalar
+- `package.json`: Proje bağımlılıkları ve komutları
+- `next.config.mjs`: Next.js yapılandırması
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Kurulum ve Çalıştırma
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# my-portfolio
->>>>>>> 28046c0600547b5a5608c8970be08ee897e8e76c
+Projeyi klonlayın:
+
+`git clone https://github.com/zeyneptopcu06/my-portfolio.git`
+
+Proje klasörüne girin:
+
+`cd my-portfolio`
+
+Bağımlılıkları yükleyin:
+
+`npm install`
+
+Projeyi başlatın:
+
+`npm run dev`
+
+Uygulama çalıştıktan sonra tarayıcıdan şu adrese gidin:
+
+`http://localhost:3000`
+
+## 📚 Bu Projede Kazanılan Deneyimler
+
+Bu proje ile şu konularda pratik yapılmıştır:
+
+- Next.js ile sayfa yapısı oluşturma
+- React bileşenleri kullanma
+- Tailwind CSS ile arayüz tasarlama
+- Responsive web tasarımı hazırlama
+- Kişisel portföy içeriğini düzenli sunma
+- GitHub üzerinde proje paylaşma
+
+---
+
+Bu proje, kişisel portföy sitesi olarak hazırlanmış ve yazılım geliştirme çalışmalarını düzenli bir şekilde sunmak amacıyla geliştirilmiştir.
